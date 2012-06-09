@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/nl.esa.tec.swe.taste.metamodel/src"
+    modelPluginID="nl.esa.tec.swe.taste.metamodel" modelName="Taste" importerID="org.eclipse.emf.importer.ecore"
+    complianceLevel="6.0" copyrightFields="false">
+  <foreignModel>../taste.ecore</foreignModel>
+  <genPackages prefix="Taste" basePackage="nl.esa.tec.swe.taste.metamodel" disposableProviderFactory="true"
+      ecorePackage="taste.ecore#/">
+    <genClasses ecoreClass="taste.ecore#//Function">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute taste.ecore#//Function/language"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference taste.ecore#//Function/interfaces"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference taste.ecore#//Function/associatedBoard"/>
+    </genClasses>
+    <genClasses ecoreClass="taste.ecore#//Board">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference taste.ecore#//Board/boardcpu"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute taste.ecore#//Board/type"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference taste.ecore#//Board/functions"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference taste.ecore#//Board/drivers"/>
+    </genClasses>
+    <genClasses ecoreClass="taste.ecore#//Processor">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference taste.ecore#//Processor/cpuboard"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute taste.ecore#//Processor/type"/>
+    </genClasses>
+    <genClasses ecoreClass="taste.ecore#//Driver">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference taste.ecore#//Driver/EReference0"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference taste.ecore#//Driver/associatedBoard"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference taste.ecore#//Driver/drvbus"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute taste.ecore#//Driver/type"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute taste.ecore#//Driver/config"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference taste.ecore#//Driver/connections"/>
+    </genClasses>
+    <genClasses ecoreClass="taste.ecore#//Bus">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute taste.ecore#//Bus/type"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference taste.ecore#//Bus/connections"/>
+    </genClasses>
+    <genClasses ecoreClass="taste.ecore#//fctconn">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference taste.ecore#//fctconn/connbus"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference taste.ecore#//fctconn/connfct"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute taste.ecore#//fctconn/name"/>
+    </genClasses>
+    <genClasses ecoreClass="taste.ecore#//Interface">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute taste.ecore#//Interface/direction"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference taste.ecore#//Interface/intfct"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute taste.ecore#//Interface/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute taste.ecore#//Interface/isProvidedInterface"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference taste.ecore#//Interface/connectedto"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute taste.ecore#//Interface/interfaceType"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference taste.ecore#//Interface/connections"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference taste.ecore#//Interface/parameters"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference taste.ecore#//Interface/associatedFunction"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute taste.ecore#//Interface/period"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute taste.ecore#//Interface/deadline"/>
+    </genClasses>
+    <genClasses ecoreClass="taste.ecore#//BusConnection">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference taste.ecore#//BusConnection/busconn"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference taste.ecore#//BusConnection/associatedBus"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference taste.ecore#//BusConnection/associatedDriver"/>
+    </genClasses>
+    <genClasses ecoreClass="taste.ecore#//InterfaceConnection">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference taste.ecore#//InterfaceConnection/ProvidedInterface"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference taste.ecore#//InterfaceConnection/RequiredInterface"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference taste.ecore#//InterfaceConnection/associatedBus"/>
+    </genClasses>
+    <genClasses ecoreClass="taste.ecore#//InterfaceParameter">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute taste.ecore#//InterfaceParameter/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute taste.ecore#//InterfaceParameter/type"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute taste.ecore#//InterfaceParameter/direction"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference taste.ecore#//InterfaceParameter/associatedInterface"/>
+    </genClasses>
+    <genClasses ecoreClass="taste.ecore#//TasteComponent">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute taste.ecore#//TasteComponent/componentType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute taste.ecore#//TasteComponent/name"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

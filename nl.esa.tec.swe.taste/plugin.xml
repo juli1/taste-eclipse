@@ -1,0 +1,342 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+ 	<extension point="org.eclipse.graphiti.ui.diagramTypes">
+ 		<diagramType description="TASTE diagram" id="taste" name="TASTE diagram" type="taste">
+    	</diagramType>
+  	</extension>
+ 
+  	<extension point="org.eclipse.graphiti.ui.diagramTypeProviders">
+    	<diagramTypeProvider class="nl.esa.tec.swe.taste.main.Typeprovider" description="TASTE diagram editor" id="nl.esa.tec.swe.taste.main.TypeProvider" name="TASTE Diagram editor">
+      	<diagramType id="taste"></diagramType>
+    	</diagramTypeProvider>
+  	</extension>
+
+	<extension point="org.eclipse.ui.views.properties.tabbed.propertyContributor">
+ 		<propertyContributor contributorId="taste.PropertyContributor">
+ 			<propertyCategory category="Graphiti"></propertyCategory>
+ 		</propertyContributor>
+ 	</extension>
+       
+ 	<extension point="org.eclipse.ui.views.properties.tabbed.propertyTabs">
+ 		<propertyTabs contributorId="taste.PropertyContributor">
+ 			<propertyTab label="TASTE Properties" category="Graphiti" id="taste.main.tab">
+ 			</propertyTab>
+ 		</propertyTabs>
+ 	</extension>
+  
+ 	<extension point="org.eclipse.ui.views.properties.tabbed.propertySections">
+ 		<propertySections contributorId="taste.PropertyContributor">
+ 		   <propertySection tab="taste.main.tab" class="nl.esa.tec.swe.taste.graphic.properties.NameHandling" filter="nl.esa.tec.swe.taste.graphic.properties.NameFilter"  id="taste.main.tab.name">
+ 		   </propertySection>
+ 		
+ 		   <propertySection tab="taste.main.tab" class="nl.esa.tec.swe.taste.graphic.properties.PlatformHandling" afterSection="taste.main.tab.name" filter="nl.esa.tec.swe.taste.graphic.properties.PlatformFilter"  id="taste.main.tab.platform">
+ 		   </propertySection>
+
+ 		   <propertySection tab="taste.main.tab" class="nl.esa.tec.swe.taste.graphic.properties.LanguageHandling" afterSection="taste.main.tab.name" filter="nl.esa.tec.swe.taste.graphic.properties.LanguageFilter"  id="taste.main.tab.languagetype">
+ 		   </propertySection>
+ 		   
+ 		   <propertySection tab="taste.main.tab" class="nl.esa.tec.swe.taste.graphic.properties.BusTypeHandling" afterSection="taste.main.tab.name" filter="nl.esa.tec.swe.taste.graphic.properties.BusTypeFilter"  id="taste.main.tab.bustype">
+ 		   </propertySection>
+ 		   
+ 		   <propertySection tab="taste.main.tab" class="nl.esa.tec.swe.taste.graphic.properties.InterfaceConnectionBusHandling" afterSection="taste.main.tab.name" filter="nl.esa.tec.swe.taste.graphic.properties.InterfaceConnectionBusFilter"  id="taste.main.tab.interfaceconnection">
+ 		   </propertySection>
+ 		   
+ 		   <propertySection tab="taste.main.tab" class="nl.esa.tec.swe.taste.graphic.properties.InterfaceParametersHandling" afterSection="taste.main.tab.name" filter="nl.esa.tec.swe.taste.graphic.properties.InterfaceParametersFilter"  id="taste.main.tab.interfaceparameters">
+ 		   </propertySection>
+ 		   
+ 		   <propertySection tab="taste.main.tab" class="nl.esa.tec.swe.taste.graphic.properties.InterfaceTypeHandling" afterSection="taste.main.tab.name" filter="nl.esa.tec.swe.taste.graphic.properties.InterfaceTypeFilter"  id="taste.main.tab.interfacetype">
+ 		   </propertySection>
+ 		    		   
+ 		   <propertySection tab="taste.main.tab" class="nl.esa.tec.swe.taste.graphic.properties.DriverTypeHandling" afterSection="taste.main.tab.name" filter="nl.esa.tec.swe.taste.graphic.properties.DriverTypeFilter"  id="taste.main.tab.drivertype">
+ 		   </propertySection>
+ 		    		   
+ 		   <propertySection tab="taste.main.tab" class="nl.esa.tec.swe.taste.graphic.properties.ConfigHandling" afterSection="taste.main.tab.drivertype" filter="nl.esa.tec.swe.taste.graphic.properties.ConfigFilter"  id="taste.main.tab.config">
+ 		   </propertySection>
+ 		   
+ 		   <propertySection tab="taste.main.tab" class="nl.esa.tec.swe.taste.graphic.properties.PeriodHandling" afterSection="taste.main.tab.name" filter="nl.esa.tec.swe.taste.graphic.properties.PeriodFilter"  id="taste.main.tab.interfaceperiod">
+ 		   </propertySection>
+ 		   
+ 		   <propertySection tab="taste.main.tab" class="nl.esa.tec.swe.taste.graphic.properties.DeadlineHandling" afterSection="taste.main.tab.name" filter="nl.esa.tec.swe.taste.graphic.properties.DeadlineFilter"  id="taste.main.tab.interfacedeadline">
+ 		   </propertySection>
+  		</propertySections>
+  		
+ 	</extension>
+    <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            locationURI="popup:org.eclipse.ui.popup.any?after=additions">
+         <command
+               commandId="nl.esa.tec.swe.taste.commands.generatedataview"
+               label="Generate Data View"
+               style="push">
+               <visibleWhen
+                  checkEnabled="false">
+               <with
+                     variable="activeMenuSelection">    
+                     <iterate>
+				       <adapt type="org.eclipse.core.resources.IResource">
+				          <test property="org.eclipse.core.resources.name" 
+				                value="*.asn"/>
+				       </adapt>
+				    </iterate>
+
+               </with>
+            </visibleWhen>
+         </command>
+      </menuContribution>
+   </extension>
+       <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            locationURI="popup:org.eclipse.ui.popup.any?after=additions">
+         <command
+               commandId="nl.esa.tec.swe.taste.commands.generateproject"
+               label="Export Project"
+               style="push">
+               <visibleWhen
+                  checkEnabled="false">
+               <with
+                     variable="activeMenuSelection">    
+                     <iterate>
+                       <instanceof value="org.eclipse.core.resources.IProject">
+					</instanceof>
+				    </iterate>
+
+               </with>
+            </visibleWhen>
+         </command>
+      </menuContribution>
+   </extension>
+   <extension
+         point="org.eclipse.ui.commands">
+      <command
+            defaultHandler="nl.esa.tec.swe.taste.commands.GenerateDataView"
+            id="nl.esa.tec.swe.taste.commands.generatedataview"
+            name="Generate Data View">
+      </command>
+   </extension>
+   <extension
+         point="org.eclipse.ui.commands">
+      <command
+            defaultHandler="nl.esa.tec.swe.taste.commands.TastedBuild"
+            id="nl.esa.tec.swe.taste.commands.tastedbuild"
+            name="Build using TASTEd">
+      </command>
+   </extension>
+   <extension
+         point="org.eclipse.ui.commands">
+      <command
+            defaultHandler="nl.esa.tec.swe.taste.commands.TastedGenerateSkels"
+            id="nl.esa.tec.swe.taste.commands.tastedgenerateskels"
+            name="Generate Code Skeletons using TASTEd">
+      </command>
+   </extension>
+   <extension
+         point="org.eclipse.ui.commands">
+      <command
+            defaultHandler="nl.esa.tec.swe.taste.commands.TastedGenerateDataview"
+            id="nl.esa.tec.swe.taste.commands.tastedgeneratedataview"
+            name="DataView Generation using TASTEd">
+      </command>
+   </extension>
+   <extension
+         point="org.eclipse.ui.commands">
+      <command
+            defaultHandler="nl.esa.tec.swe.taste.commands.GenerateProject"
+            id="nl.esa.tec.swe.taste.commands.generateproject"
+            name="Generate Project">
+      </command>
+   </extension>
+   <extension
+         point="org.eclipse.ui.commands">
+      <command
+            defaultHandler="nl.esa.tec.swe.taste.commands.NavigatorCommands"
+            id="nl.esa.tec.swe.taste.commands.navigator"
+            name="Navigator Command">
+      </command>
+   </extension>
+   <extension point="org.eclipse.ui.views">
+   <!--
+        <view
+              category="nl.esa.tec.swe.taste.views.category"
+              class="nl.esa.tec.swe.taste.views.MainView"
+              icon="icons/taste-logo32.gif"
+              id="nl.esa.tec.swe.taste.view"
+              name="TASTE view"/>
+         -->
+        <category
+              id="nl.esa.tec.swe.taste.views.category"
+              name="TASTE views">
+        </category>
+        <view
+              category="nl.esa.tec.swe.taste.views.category"
+              class="nl.esa.tec.swe.taste.views.Navigator"
+              icon="icons/taste-logo16.gif"
+              id="nl.esa.tec.swe.taste.views.navigator"
+              name="TASTE Navigator">
+        </view>
+   </extension>
+   
+   <extension
+         point="org.eclipse.ui.perspectives">
+      <perspective
+            class="nl.esa.tec.swe.taste.perspectives.PerspectiveFactory"
+            icon="icons/taste-logo32.gif"
+            id="nl.esa.tec.swe.taste.perspective"
+            name="TASTE">
+      </perspective>
+   </extension>
+   <extension
+         point="org.eclipse.ui.navigator.viewer">
+      <viewerActionBinding
+            viewerId="nl.esa.tec.swe.taste.views.navigator">
+         <includes>
+            <actionExtension
+                  pattern="org.eclipse.ui.navigator.resources.*">
+            </actionExtension>
+         </includes>
+      </viewerActionBinding>
+      <viewerContentBinding
+            viewerId="nl.esa.tec.swe.taste.views.navigator">
+         <includes>
+            <contentExtension
+                  pattern="org.eclipse.ui.navigator.resourceContent">
+            </contentExtension>
+            <contentExtension
+                  pattern="org.eclipse.ui.navigator.resources.filters.*">
+            </contentExtension>
+            <contentExtension
+                  pattern="org.eclipse.ui.navigator.resources.linkHelper">
+            </contentExtension>
+            <contentExtension
+                  pattern="org.eclipse.ui.navigator.resources.workingSets">
+            </contentExtension>
+         </includes>
+      </viewerContentBinding>
+   </extension>
+   <extension
+         point="org.eclipse.ui.perspectiveExtensions">
+      <perspectiveExtension
+            targetID="org.eclipse.ui.resourcePerspective">
+         <view
+               id="nl.esa.tec.swe.taste.views.navigator"
+               ratio="0.5"
+               relationship="stack"
+               relative="org.eclipse.ui.navigator.ProjectExplorer">
+         </view>
+      </perspectiveExtension>
+   </extension>
+   <extension
+         point="org.eclipse.ui.navigator.navigatorContent">
+      <navigatorContent
+            appearsBefore="org.eclipse.ui.navigator.resourceContent"
+            contentProvider="nl.esa.tec.swe.taste.views.NavigatorContentProvider"
+            icon="icons/taste-logo16.gif"
+            id="nl.esa.tec.swe.taste.views.navigatorContent"
+            labelProvider="nl.esa.tec.swe.taste.views.NavigatorLabelProvider"
+            name="TASTE Navigator Content">
+         <triggerPoints></triggerPoints>
+      </navigatorContent>
+
+   </extension>
+   
+   
+   <extension point = "org.eclipse.ui.actionSets">
+        <actionSet
+            id="nl.esa.tec.swe.taste.actionset"
+            label="TASTE actions"
+	    visible="false"
+	    description="Action set for the TASTE profile">
+	    <menu
+           icon="icons/taste-logo16.gif"
+           id="nl.esa.tec.swe.taste.menu"
+           label="TASTE">
+		<separator name="taste"/>
+	    </menu>
+	    <action
+           class="nl.esa.tec.swe.taste.commands.GenerateProject"
+           icon="icons/zip16.png"
+           id="nl.esa.tec.swe.taste.commands.GenerateProjectAction"
+           label="Generate Project"
+           menubarPath="nl.esa.tec.swe.taste.menu/taste"
+           toolbarPath="Normal"
+           tooltip="Export the project in a ZIP file">
+     	</action>
+	    <action
+           class="nl.esa.tec.swe.taste.commands.TastedBuild"
+           icon="icons/zip16.png"
+           id="nl.esa.tec.swe.taste.commands.TastedBuild"
+           label="Build Project using TASTEd"
+           menubarPath="nl.esa.tec.swe.taste.menu/taste"
+           toolbarPath="Normal"
+           tooltip="Build the project using a TASTEd server">
+     	</action>
+     	<action
+           class="nl.esa.tec.swe.taste.commands.TastedGenerateSkels"
+           icon="icons/skel16.png"
+           id="nl.esa.tec.swe.taste.commands.TastedGenerateSkels"
+           label="Generate code skeletons using TASTEd"
+           menubarPath="nl.esa.tec.swe.taste.menu/taste"
+           toolbarPath="Normal"
+           tooltip="Generate the skels using tasted">
+     	</action>
+        <action
+           class="nl.esa.tec.swe.taste.commands.TastedGenerateDataview"
+           icon="icons/zip16.png"
+           id="nl.esa.tec.swe.taste.commands.TastedGenerateDataview"
+           label="Generate data view using TASTEd"
+           menubarPath="nl.esa.tec.swe.taste.menu/taste"
+           toolbarPath="Normal"
+           tooltip="Generate the data view using tasted">
+     	</action>
+	    <action
+           class="nl.esa.tec.swe.taste.commands.GenerateDataView"
+           icon="icons/dataview16.png"
+           id="nl.esa.tec.swe.taste.commands.GenerateDataViewAction"
+           label="Generate Data View"
+           menubarPath="nl.esa.tec.swe.taste.menu/taste"
+           toolbarPath="Normal"
+           tooltip="Force the generation of the AADL data view">
+     	</action>
+     	<action
+           class="nl.esa.tec.swe.taste.commands.NavigatorCommands"
+           icon="icons/taste-logo16.gif"
+           id="nl.esa.tec.swe.taste.commands.NavigatorCommand"
+           label="Navigator Commands">
+     	</action>
+        </actionSet>
+        
+        <actionSet
+            id="nl.esa.tec.swe.taste.actionsetexpert"
+            label="TASTE actions (expert mode)"
+	    visible="false"
+	    description="Action set for the TASTE profile (expert mode)">
+	    <menu
+           icon="icons/taste-logo16.gif"
+           id="nl.esa.tec.swe.taste.menuexpert"
+           label="TASTE (expert mode)">
+		<separator name="taste"/>
+	    </menu>
+       <action
+           class="nl.esa.tec.swe.taste.commands.GenerateCodeSkeletons"
+           icon="icons/skel16.png"
+           id="nl.esa.tec.swe.taste.commands.GenerateCodeSkeletons"
+           label="Force Application Skeletons Generation"
+           menubarPath="nl.esa.tec.swe.taste.menu/taste"
+           toolbarPath="Normal"
+           tooltip="Force the generation of code skeletons">
+     	</action>
+       <action
+           class="nl.esa.tec.swe.taste.commands.GenerateTasteModels"
+           icon="icons/aadllogo16.png"
+           id="nl.esa.tec.swe.taste.commands.GenerateTasteModels"
+           label="Generate Interface and Deployment models"
+           menubarPath="nl.esa.tec.swe.taste.menu/taste"
+           toolbarPath="Normal"
+           tooltip="Generate Taste Models (Interface/Deployment models)">
+     	</action>
+        </actionSet>
+     	
+    </extension>
+</plugin>

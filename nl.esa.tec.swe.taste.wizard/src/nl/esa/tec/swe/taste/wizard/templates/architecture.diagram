@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="ASCII"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:al="http://eclipse.org/graphiti/mm/algorithms" xmlns:pi="http://eclipse.org/graphiti/mm/pictograms" xmlns:taste="http://taste/1.0">
+  <pi:Diagram visible="true" gridUnit="10" diagramTypeId="taste" name="architecture" snapToGrid="true" showGuides="true" pictogramLinks="/0/@children.0/@link /0/@children.0/@children.1/@link">
+    <graphicsAlgorithm xsi:type="al:Rectangle" background="/0/@colors.1" foreground="/0/@colors.0" lineWidth="1" transparency="0.0" width="1000" height="1000"/>
+    <children xsi:type="pi:ContainerShape" visible="true" active="true">
+      <graphicsAlgorithm xsi:type="al:RoundedRectangle" background="/0/@colors.3" foreground="/0/@colors.2" lineWidth="2" filled="false" transparency="0.0" width="100" height="50" x="130" y="30" cornerHeight="5" cornerWidth="5"/>
+      <link businessObjects="/1"/>
+      <anchors xsi:type="pi:ChopboxAnchor"/>
+      <children visible="true">
+        <graphicsAlgorithm xsi:type="al:Polyline" foreground="/0/@colors.2" lineWidth="2" filled="false" transparency="0.0">
+          <points y="20"/>
+          <points x="100" y="20"/>
+        </graphicsAlgorithm>
+      </children>
+      <children visible="true">
+        <graphicsAlgorithm xsi:type="al:Text" foreground="/0/@colors.4" lineWidth="1" transparency="0.0" width="100" height="20" font="/0/@fonts.0" horizontalAlignment="ALIGNMENT_CENTER" value="Board systemboard"/>
+        <link businessObjects="/1"/>
+      </children>
+    </children>
+    <colors red="227" green="238" blue="249"/>
+    <colors red="255" green="255" blue="255"/>
+    <colors red="255" green="102"/>
+    <colors red="255" green="204" blue="153"/>
+    <colors red="51" green="51" blue="153"/>
+    <fonts name="Arial" size="8" bold="true"/>
+  </pi:Diagram>
+  <taste:Board name="systemboard"/>
+</xmi:XMI>

@@ -1,0 +1,7 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Utils
+Bundle-SymbolicName: nl.esa.tec.swe.taste.utils
+Bundle-Version: 1.0.0.qualifier
+Export-Package: nl.esa.tec.swe.taste.utils
+Require-Bundle: org.eclipse.core.resources

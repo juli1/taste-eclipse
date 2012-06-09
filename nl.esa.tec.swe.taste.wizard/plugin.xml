@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.newWizards">
+      <wizard
+            category="nl.esa.tec.swe.taste.category.wizards"
+            class="nl.esa.tec.swe.taste.wizard.ProjectWizard"
+            icon="icons/taste-logo32.gif"
+            id="nl.esa.tec.swe.taste.wizard.project"
+            name="TASTE project">
+      </wizard>
+      <category
+            id="nl.esa.tec.swe.taste.category.wizards"
+            name="TASTE">
+      </category>
+   </extension>
+   <extension
+         point="org.eclipse.ui.views">
+      <view
+            class="org.eclipse.ui.navigator.CommonNavigator"
+            icon="icons/navigator.gif"
+            id="nl.esa.tec.swe.taste.navigator"
+            name="TASTE navigator">
+      </view>
+   </extension>
+   <extension
+         point="org.eclipse.ui.navigator.viewer">
+      <viewerActionBinding
+            viewerId="nl.esa.tec.swe.taste.navigator">
+         <includes>
+            <actionExtension
+                  pattern="org.eclipse.ui.navigator.resources.*">
+            </actionExtension>
+         </includes>
+      </viewerActionBinding>
+      <viewerContentBinding
+            viewerId="nl.esa.tec.swe.taste.navigator">
+         <includes>
+            <contentExtension
+                  pattern="org.eclipse.ui.navigator.resourceContent">
+            </contentExtension>
+            <contentExtension
+                  pattern="org.eclipse.ui.navigator.resources.filters.*">
+            </contentExtension>
+            <contentExtension
+                  pattern="org.eclipse.ui.navigator.resources.linkHelper">
+            </contentExtension>
+            <contentExtension
+                  pattern="org.eclipse.ui.navigator.resources.workingSets">
+            </contentExtension>
+         </includes>
+      </viewerContentBinding>
+   </extension>
+   <extension
+         point="org.eclipse.ui.perspectiveExtensions">
+      <perspectiveExtension
+            targetID="org.eclipse.ui.resourcePerspective">
+         <view
+               id="nl.esa.tec.swe.taste.navigator"
+               ratio="0.5"
+               relationship="stack"
+               relative="org.eclipse.ui.navigator.ProjectExplorer">
+         </view>
+      </perspectiveExtension>
+   </extension>
+   <extension
+         point="org.eclipse.ui.preferencePages">
+      <page
+            class="nl.esa.tec.swe.taste.wizard.preferences.PreferencePage"
+            id="nl.esa.tec.swe.taste.wizard.preferencepage"
+            name="TASTE Preferences">
+      </page>
+   </extension>
+
+</plugin>

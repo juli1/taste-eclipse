@@ -1,0 +1,28 @@
+DataView DEFINITIONS AUTOMATIC TAGS ::= BEGIN
+
+My-Integer ::= INTEGER (0 .. 65535)
+
+My-Real ::= REAL (0 .. 500)
+
+My-Boolean ::= BOOLEAN
+
+Display-T ::= OCTET STRING (SIZE (1..255))
+
+Action-T ::= CHOICE 
+{
+        display Display-T,
+        other-action BOOLEAN
+}
+
+Destination-T ::= ENUMERATED { displayer, other-dest }
+
+TC-T ::= SEQUENCE 
+{
+        destination Destination-T,
+        action Action-T
+}
+
+TM-T ::= Display-T
+
+
+END
